@@ -17,7 +17,7 @@ private:
     }
 public:
     int maxUniqueSplit(string s) {
-        int ans=1;
+        int ans=0;
         unordered_set<string>seen;
         backtrack(ans,s,seen);
         return ans;
