@@ -4,17 +4,9 @@ public:
         vector<int> indegree(numCourses,0);
         vector<int> ans;
         vector<int> adj[numCourses];
-        unordered_map<string,int> track;
         for(auto it:prerequisites){
             indegree[it[1]]++;
-            string p = to_string(it[1]) + "_" + to_string(it[0]);
-            if(track[p]==1)
-                return ans;
-            else{
             adj[it[0]].push_back(it[1]);
-                string x = to_string(it[0]) + "_" + to_string(it[1]);
-                track[x] = 1;
-            }
         }
         queue<int> q;
         for(int i = 0; i < numCourses; i++)
