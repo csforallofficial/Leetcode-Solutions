@@ -1,19 +1,19 @@
 class Solution {
 public:
     string crackSafe(int n, int k) {
-        unordered_set<string> track;
-        string s = string(n-1,'0');
-        string bruijn = s;
-        solve(s,&bruijn,&track,n,k);
-        return bruijn;
+        unordered_set<string> visited;
+        string cur = string(n-1,'0');
+        string debruijn = cur;
+        solve(&visited,&debruijn,cur,n,k);
+        return debruijn;
     }
-    void solve(string s, string *bruijn, unordered_set<string> *track, int n, int k){
+    void solve(unordered_set<string> *visited, string *debruijn, string cur, int n, int k){
         for(int i = k-1; i >= 0; i--){
-            string cur = s + to_string(i);
-            if(track->find(cur)==track->end()){
-                track->insert(cur);
-                *bruijn += to_string(i);
-                solve(cur.substr(1),bruijn,track,n,k);
+            string nex = cur + to_string(i);
+            if(visited->find(nex)==visited->end()){
+                visited->insert(nex);
+                *debruijn += to_string(i);
+                solve(visited,debruijn,nex.substr(1),n,k);
             }
         }
     }
