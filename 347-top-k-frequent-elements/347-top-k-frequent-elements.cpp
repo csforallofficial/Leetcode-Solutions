@@ -1,11 +1,11 @@
 class Solution {
 public:
     struct Node{
-        int no;
+        int num;
         int freq;
-        Node(int num, int fre){
-            no = num;
-            freq = fre;
+        Node(int a, int b){
+            num = a;
+            freq = b;
         }
     };
     struct compare{
@@ -24,7 +24,7 @@ public:
         while(k--){
             Node temp = heap.top();
             heap.pop();
-            ans.push_back(temp.no);
+            ans.push_back(temp.num);
         }
         return ans;
     }
